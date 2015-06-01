@@ -1,0 +1,8 @@
+<h1>{{game}}</h1>
+
+<ul class="small-block-grid-3">
+	<li ng-repeat="stream in results">
+		<img src="{{stream.preview.large}}">
+		<a href="#/{{game}}/{{stream.channel.name}}">{{stream.channel.name}}</a>
+	</li>
+</ul>

@@ -1,0 +1,19 @@
+
+<div class="row">
+	<h1>home</h1>
+
+	<ul>
+		<li ng-repeat="obj in topStreams">	
+			<a href="#/{{obj.name}}">{{obj.name}}</a>
+			<p>{{obj.viewers}}</p>
+			<div class="row">
+				<div ng-repeat="stream in obj.streams | limitTo: 6" class="large-2 columns" ng-class="isLast($last)">
+					<img src="{{stream.preview.small}}">
+					<p>{{stream.channel.name}}</p>
+				</div>
+			</div>
+			
+		</li>
+	</ul>
+
+</div>
