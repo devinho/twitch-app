@@ -11,6 +11,7 @@ twitchControllers.filter("toArray", function(){
 });
 
 twitchControllers.controller('mainController', ['$scope', 'Streams','Games', function($scope, Streams, Games){
+	$scope.test = 'test';
 
 	Games.getAll().success(function(data){
 		$scope.games = data.top;
@@ -31,11 +32,11 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', fun
 					viewers: stream.viewers
 				});
 
-
 				if (completed == $scope.games.length){
 					$scope.topStreams.sort(function(a,b) { return b.viewers - a.viewers } );
 					console.log($scope.topStreams);
 				}
+
 			}).error(function(err){
 
 			});
@@ -43,34 +44,9 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', fun
 
 		});
 
-		// for (var i in $scope.games){
-		// 	$scope.topStreams[$scope.games[i].game.name] = [];
-		// 	Streams.searchFew($scope.games[i].game).success(function(data){
-		// 		completed++;
-		// 		console.log(data);
-		// 		// $scope.topStreams[data.streams[]].push(data.stream);
-
-		// 		if (completed == $scope.games.length - 1){
-		// 			console.log($scope.topStreams);
-		// 		}
-		// 	}).error(function(err){
-
-		// 	});
-		// }
-
 	}).error(function(err){
 		console.log(err)
 	});
-
-	
-
-	// for (var i = 0 ; i < $scope.games.length; i++){
-	// 	Streams.searchFew($scope.games[i].game).success(function(data){
-	// 		console.log($scope.games.top.game);
-	// 	}).error(function(err){
-	// 		console.log(err);
-	// 	});
-	// }
 
 	
 

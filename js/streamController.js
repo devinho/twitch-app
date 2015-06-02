@@ -4,8 +4,8 @@ twitchControllers.controller('streamController',  ['$scope', '$sce', 'Streams', 
 		$scope.stream = $routeParams.stream;
 
 		$scope.twitchPlayer = '<iframe id="player" type="text/html" width="1000" height="500"
-  src="http://www.twitch.tv/' +  $scope.stream + '/embed"
-  frameborder="0"></iframe>'
+		src="http://www.twitch.tv/' +  $scope.stream + '/embed"
+		frameborder="0"></iframe>'
 
   		$scope.twitchChat = '<iframe frameborder="0" 
         scrolling="no" 
@@ -13,7 +13,7 @@ twitchControllers.controller('streamController',  ['$scope', '$sce', 'Streams', 
         src="http://www.twitch.tv/'+  $scope.stream + '/chat" 
         height="500" 
         width="1000">
-</iframe>'
+		</iframe>'
 
 		$scope.injectPlayer = function(){
 			return $sce.trustAsHtml($scope.twitchPlayer);
