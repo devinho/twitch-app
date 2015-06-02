@@ -23,3 +23,12 @@ services.factory('Games', function($http) {
         }
     }
 });
+
+services.factory('streamsAzubu', function($http) {
+    var baseUrl = "http://api.azubu.tv";
+    return {
+        getLive : function(game) {
+            return $http.get(baseUrl + "/public/channel/live/list/game/" + game);
+        }
+    }
+});

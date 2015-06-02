@@ -32,6 +32,8 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', fun
 					viewers: stream.viewers
 				});
 
+				console.log(stream.game.name);
+
 				if (completed == $scope.games.length){
 					$scope.topStreams.sort(function(a,b) { return b.viewers - a.viewers } );
 					console.log($scope.topStreams);
@@ -47,7 +49,5 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', fun
 	}).error(function(err){
 		console.log(err)
 	});
-
-	
 
 }]);
