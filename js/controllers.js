@@ -12,10 +12,6 @@ twitchControllers.filter("toArray", function(){
 
 twitchControllers.controller('mainController', ['$scope', 'Streams','Games', function($scope, Streams, Games){
 
-	$scope.isLast = function(check) {
-	    var cssClass = check ? 'large-2 columns end' : null;
-	    return cssClass;
-	};
 	Games.getAll().success(function(data){
 		$scope.games = data.top;
 

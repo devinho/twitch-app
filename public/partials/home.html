@@ -4,13 +4,15 @@
 
 	<ul>
 		<li ng-repeat="obj in topStreams">	
-			<a href="#/{{obj.name}}">{{obj.name}}</a>
-			<p>{{obj.viewers}}</p>
+			<h1><a href="#/{{obj.name}}">{{obj.name}}</a></h1>
+			<p>TOTAL VIEWERS: {{obj.viewers}}</p>
 			<div class="row">
-				<div ng-repeat="stream in obj.streams | limitTo: 6" class="large-2 columns" ng-class="isLast($last)">
-					<img src="{{stream.preview.small}}">
-					<p>{{stream.channel.name}}</p>
-				</div>
+				<ul class="small-block-grid-6">
+					<li ng-repeat="stream in obj.streams | limitTo: 6" class="large-2 columns"> 
+						<img src="{{stream.preview.large}}">
+					<a href="#/{{stream.channel.game}}/{{stream.channel.name}}">{{stream.channel.name}}</a>
+					</li>
+				</ul>
 			</div>
 			
 		</li>
