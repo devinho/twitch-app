@@ -26,9 +26,12 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 						"channel": {
 							"name": list[x].user.display_name
 						},
-						"platform": "azubu"
+						"platform": "azubu",
+						"viewers": list[x].view_count
 					});
 				}
+
+				$scope.results.sort(function(a,b) {return b.viewers - a.viewers});
 				
 				// console.log(data.streams);
 			}).error(function(err){
@@ -43,5 +46,5 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 		
 
 
-		});
+		// });
 }]);
