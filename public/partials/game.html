@@ -3,6 +3,6 @@
 <ul class="small-block-grid-3">
 	<li ng-repeat="stream in results">
 		<img src="{{stream.preview.large}}">
-		<a href="#/{{game}}/{{stream.channel.name}}">{{stream.channel.name}}</a>
+		<a href="#/{{game}}/{{stream.channel.name}}?platform={{stream.platform}}">{{stream.channel.name}}</a>
 	</li>
 </ul>

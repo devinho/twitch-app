@@ -8,12 +8,10 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 		Streams.searchMany($scope.game).success(function(data){
 			// console.log(azubuArray[$scope.game])
 			$scope.results = data.streams;
-			// console.log(data.streams);
-		}).error(function(err){
-			console.log(err);
-		});
-
-		streamsAzubu.getLive(azubuArray[$scope.game]).success(function(data){
+			for (x in $scope.results){
+				$scope.results[x]['platform'] = "twitch";
+			}	
+			streamsAzubu.getLive(azubuArray[$scope.game]).success(function(data){
 
 			var list = data.data;
 			var stream = [];
@@ -26,8 +24,18 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 					},
 					"channel": {
 						"name": list[x].user.display_name
-					}
+					},
+					"platform": "azubu"
 				});
 			}
+			
+			// console.log(data.streams);
+		}).error(function(err){
+			console.log(err);
+		});
+
+		
+
+
 		});
 }]);
