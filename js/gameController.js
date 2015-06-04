@@ -12,6 +12,7 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 
 			for (x in $scope.results){
 				$scope.results[x]['platform'] = "twitch";
+				$scope.results[x]['logo'] = "http://orig05.deviantart.net/377c/f/2013/134/b/2/twitch_tv_logo_by_pixpox-d65akmn.png";
 			}	
 			
 			streamsAzubu.getLive(azubuArray[$scope.game]).success(function(data){
@@ -27,7 +28,8 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 							"name": list[x].user.display_name
 						},
 						"platform": "azubu",
-						"viewers": list[x].view_count
+						"viewers": list[x].view_count,
+						"logo": "https://pbs.twimg.com/profile_images/521769849651879936/Ch1accfC_400x400.png"
 					});
 				}
 

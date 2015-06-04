@@ -11,7 +11,6 @@ twitchControllers.filter("toArray", function(){
 });
 
 twitchControllers.controller('mainController', ['$scope', 'Streams','Games', 'streamsAzubu', function($scope, Streams, Games, streamsAzubu){
-	$scope.test = 'test';
 
 	Games.getAll().success(function(data){
 		$scope.games = data.top;
@@ -27,14 +26,17 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', 'st
 
 				for (x in data.streams){
 					data.streams[x]['platform'] = "twitch";
+					data.streams[x]['logo'] = "http://orig05.deviantart.net/377c/f/2013/134/b/2/twitch_tv_logo_by_pixpox-d65akmn.png";
 				}
 				
 				var azubuArray = { "League of Legends": "league-of-legends", "Counter-Strike: Global Offensive": "csgo", 
 				"Dota 2": "dota-2", "Hearthstone: Heroes of Warcraft": "hearthstone", "StarCraft II: Heart of the Swarm": "starcraft-ii", 
-				"Heroes of the Storm": "heroes-of-the-storm"};
+				"Heroes of the Storm": "heroes-of-the-storm", "Call of Duty: Advanced Warfare ": "codadvancedwarfare",
+				"Battlefield: Hardline": "battlefield-hardline"};
 						 		
 				streamsAzubu.getLive(azubuArray[stream.game.name]).success(function(data2){
 					
+					var additionalViewers = 0;
 					completed++;
 
 					for (x in data2.data){
@@ -43,11 +45,17 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', 'st
 								"large": data2.data[x].url_thumbnail
 							},
 							"channel": {
-								"name": data2.data[x].user.display_name
+								"name": data2.data[x].user.display_name,
+								"game": stream.game.name
 							},
 							"platform": "azubu",
-							"viewers": data2.data[x].view_count
+							"viewers": data2.data[x].view_count,
+							"logo": "https://pbs.twimg.com/profile_images/521769849651879936/Ch1accfC_400x400.png"
 						});
+
+
+
+						additionalViewers += data2.data[x].view_count;
 
 					}
 
@@ -56,7 +64,7 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', 'st
 					$scope.topStreams.push({
 						streams: data.streams,
 						name: stream.game.name,
-						viewers: stream.viewers
+						viewers: stream.viewers + additionalViewers
 					});
 
 					if (completed == $scope.games.length){
