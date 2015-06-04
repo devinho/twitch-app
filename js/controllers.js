@@ -10,7 +10,7 @@ twitchControllers.filter("toArray", function(){
     };
 });
 
-twitchControllers.controller('mainController', ['$scope', 'Streams','Games', function($scope, Streams, Games){
+twitchControllers.controller('mainController', ['$scope', 'Streams','Games', 'streamsAzubu', function($scope, Streams, Games, streamsAzubu){
 	$scope.test = 'test';
 
 	Games.getAll().success(function(data){
@@ -20,23 +20,55 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', fun
 
 		var completed = 0;
 
-
-
 		async.forEach($scope.games, function(stream, callback){
 
 			Streams.searchMany(stream.game.name).success(function(data){
 				completed++;
-				$scope.topStreams.push({
-					streams: data.streams,
-					name: stream.game.name,
-					viewers: stream.viewers
-				});
 
-				console.log(stream.game.name);
+				for (x in data.streams){
+					data.streams[x]['platform'] = "twitch";
+				}
+			
+			// var azubuArray = { "League of Legends": "league-of-legends", "Counter-Strike: Global Offensive": "csgo", 
+			// "Dota 2": "dota-2", "Hearthstone: Heroes of Warcraft": "hearthstone", "StarCraft II: Heart of the Swarm": "starcraft-ii", 
+			// "Heroes of the Storm": "heroes-of-the-storm"};
+				
+
+			// 	streamsAzubu.getLive(azubuArray[stream.game.name]).success(function(data2){
+
+			// 		for (x in data2.data){
+			// 			data.streams.push({
+			// 				"preview": {
+			// 					"large": data2.data[x].url_thumbnail
+			// 				},
+			// 				"channel": {
+			// 					"name": data2.data[x].user.display_name
+			// 				},
+			// 				"platform": "azubu",
+			// 				"viewers": data2.data[x].view_count
+			// 			});
+
+			// 		}
+
+
+
+			// 		data.streams.sort(function(a,b) {return b.viewers - a.viewers});
+
+
+					$scope.topStreams.push({
+						streams: data.streams,
+						name: stream.game.name,
+						viewers: stream.viewers
+					});
+
+					// }).error(function(err){
+					// 	console.log(err);
+					// });
 
 				if (completed == $scope.games.length){
 					$scope.topStreams.sort(function(a,b) { return b.viewers - a.viewers } );
 					console.log($scope.topStreams);
+					$state.reload();
 				}
 
 			}).error(function(err){

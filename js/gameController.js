@@ -40,11 +40,5 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 		}).error(function(err){
 			console.log(err);
 		});
-
-		
-
-		
-
-
 		// });
 }]);
