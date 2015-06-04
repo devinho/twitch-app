@@ -2,10 +2,13 @@
 
 <ul class="small-block-grid-3">
 	<li ng-repeat="stream in results">
-		<div class="thumbnail">
-			<img class="preview" src="{{stream.preview.large}}">
-			<img class="logo-games" src="{{stream.logo}}">
-		</div>
+		<a href="#/{{game}}/{{stream.channel.name}}?platform={{stream.platform}}">
+			<div class="thumbnail">
+				<img class="preview" src="{{stream.preview.large}}">
+				<img class="logo-games" src="{{stream.logo}}">
+			</div>
+		</a>
+		
 		<a href="#/{{game}}/{{stream.channel.name}}?platform={{stream.platform}}">{{stream.channel.name}}</a>
 		<p>{{stream.viewers}}</p>
 	</li>

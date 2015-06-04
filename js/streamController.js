@@ -5,9 +5,18 @@ twitchControllers.controller('streamController',  ['$scope', '$sce', 'Streams', 
 		$scope.platform = $routeParams.platform;
 
 		if($scope.platform == "twitch"){
+			Streams.getStream($scope.stream).success(function(data){
+				$scope.meta = "<p>viewers: " + data.views + "</p><p>followers: " + data.followers + "</p>"; 
+			}).error(function(err){
+				console.log(err);
+			});
+
 			$scope.player = '<iframe id="player" type="text/html" width="1000" height="500"
 			src="http://www.twitch.tv/' +  $scope.stream + '/embed"
 			frameborder="0"></iframe>'
+
+
+			
 
 	  		$scope.chat = '<iframe frameborder="0" 
 	        scrolling="no" 
@@ -19,6 +28,7 @@ twitchControllers.controller('streamController',  ['$scope', '$sce', 'Streams', 
 		} 
 		else if($scope.platform == "azubu"){
 			$scope.player = '<iframe width="1000" height="500" src="http://www.azubu.tv/azubulink/embed=' + $scope.stream + '"></iframe>';
+			$scope.meta = "ASDF";
 			$scope.chat = '<iframe height="500" width="1000" src="http://www.azubu.tv/' + $scope.stream + '/chatpopup"></iframe>';
 		}
 		else{
@@ -29,6 +39,10 @@ twitchControllers.controller('streamController',  ['$scope', '$sce', 'Streams', 
 
 		$scope.injectPlayer = function(){
 			return $sce.trustAsHtml($scope.player);
+		}
+
+		$scope.injectMeta = function(){
+			return $sce.trustAsHtml($scope.meta);
 		}
 
 		$scope.injectChat = function(){
