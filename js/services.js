@@ -7,10 +7,11 @@ services.factory('Streams', function($http) {
             return $http.get(baseUrl + "/channels/" + username);
         },
         searchMany: function(value){
-            return $http.get(baseUrl + "/search/streams?type=suggest&limit=50&q="+value); //max 100
+            return $http.get(baseUrl + "/streams?limit=100&game="+value); //max 100
+            // https://api.twitch.tv/kraken/streams?limit=100&game=league of legends
         },
         searchFew: function(value){
-            return $http.get(baseUrl + "/search/streams?type=suggest&limit=6&q="+value);
+            return $http.get(baseUrl + "/streams?limit=6&game="+value);
         }
     }
 });
