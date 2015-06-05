@@ -15,9 +15,6 @@ twitchControllers.controller('streamController',  ['$scope', '$sce', 'Streams', 
 			src="http://www.twitch.tv/' +  $scope.stream + '/embed"
 			frameborder="0"></iframe>'
 
-
-			
-
 	  		$scope.chat = '<iframe frameborder="0" 
 	        scrolling="no" 
 	        id="chat_embed" 
