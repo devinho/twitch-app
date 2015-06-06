@@ -8,7 +8,6 @@ services.factory('Streams', function($http) {
         },
         searchMany: function(value){
             return $http.get(baseUrl + "/streams?limit=100&game="+value); //max 100
-            // https://api.twitch.tv/kraken/streams?limit=100&game=league of legends
         },
         searchFew: function(value){
             return $http.get(baseUrl + "/streams?limit=6&game="+value);
@@ -31,5 +30,15 @@ services.factory('streamsAzubu', function($http) {
         getLive : function(game) {
             return $http.get(baseUrl + "/public/channel/live/list/game/" + game);
         }
+    }
+});
+
+services.factory('Search', function($http) {
+    var baseUrl = "https://api.twitch.tv/kraken";
+    searchStream : function(search) {
+        return $http.get(baseUrl + "/search/streams?q=" + search);
+    },
+    searchGame : function(search) {
+        return $http.get(baseUrl + "/search/games?type=suggest&q=" + search);
     }
 });
