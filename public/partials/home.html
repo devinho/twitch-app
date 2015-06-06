@@ -9,14 +9,14 @@
 			<div class="row">
 				<ul class="small-block-grid-6">
 					<li ng-repeat="stream in obj.streams | limitTo: 6" class="large-2 columns"> 
-						<a href="#/{{stream.channel.game}}/{{stream.channel.name}}?platform={{stream.platform}}">
+						<a href="#/game/{{stream.channel.game}}/{{stream.channel.name}}?platform={{stream.platform}}">
 							<div class="thumbnail">
 								<img class="preview" src="{{stream.preview.large}}">
 								<img class="logo" src="{{stream.logo}}">
 							</div>
 						</a>
 						
-						<a href="#/{{stream.channel.game}}/{{stream.channel.name}}?platform={{stream.platform}}">{{stream.channel.name}}</a>
+						<a href="#/game/{{stream.channel.game}}/{{stream.channel.name}}?platform={{stream.platform}}">{{stream.channel.name}}</a>
 					</li>
 				</ul>
 			</div>

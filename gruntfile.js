@@ -17,7 +17,8 @@ module.exports = function(grunt) {
           'public/js/controllers.js': ['js/controllers.js'],
           'public/js/gameController.js': ['js/gameController.js'],
           'public/js/streamController.js': ['js/streamController.js'],
-          'public/js/app.js': ['js/app.js']
+          'public/js/app.js': ['js/app.js'],
+          'public/js/searchController.js': ['js/searchController.js']
         } //files
       } //my_target
     }, //uglify

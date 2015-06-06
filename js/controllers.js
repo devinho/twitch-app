@@ -26,7 +26,7 @@ twitchControllers.controller('mainController', ['$scope', 'Streams','Games', 'st
 
 				for (x in data.streams){
 					data.streams[x]['platform'] = "twitch";
-					data.streams[x]['logo'] = "http://orig05.deviantart.net/377c/f/2013/134/b/2/twitch_tv_logo_by_pixpox-d65akmn.png";
+					data.streams[x]['logo'] = "http://img3.wikia.nocookie.net/__cb20140727180700/logopedia/images/8/83/Twitch_icon.svg";
 				}
 				
 				var azubuArray = { "League of Legends": "league-of-legends", "Counter-Strike: Global Offensive": "csgo", 

@@ -12,7 +12,7 @@ twitchControllers.controller('gameController',  ['$scope', 'Streams', '$routePar
 
 			for (x in $scope.results){
 				$scope.results[x]['platform'] = "twitch";
-				$scope.results[x]['logo'] = "http://orig05.deviantart.net/377c/f/2013/134/b/2/twitch_tv_logo_by_pixpox-d65akmn.png";
+				$scope.results[x]['logo'] = "http://img3.wikia.nocookie.net/__cb20140727180700/logopedia/images/8/83/Twitch_icon.svg";
 			}	
 			
 			streamsAzubu.getLive(azubuArray[$scope.game]).success(function(data){

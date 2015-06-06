@@ -6,11 +6,15 @@ twitchApp.config(['$routeProvider', function($routeProvider) {
 			templateUrl: 'partials/home.html',
      		controller: 'mainController'
 		}).
-		when('/:game', {
+		when('/search',{
+			templateUrl: 'partials/search.html',
+			controller: 'searchController'
+		}).
+		when('/game/:game', {
 			templateUrl: 'partials/game.html',
      		controller: 'gameController'
 		}).
-		when('/:game/:stream', {
+		when('/game/:game/:stream', {
 			templateUrl: 'partials/stream.html',
      		controller: 'streamController'
 		}).
